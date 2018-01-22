@@ -13,25 +13,29 @@
     <video class="pozadina" src="intro/intro.mp4" autoplay poster="">
     </video>
     <div class="okvir">
-      <div class="cv article">
-        <a href="https://www.docdroid.net/kJw7sZh/stefan-radulovic-cv.pdf"><img src="images/cv.png" alt=""></a>
+      <div class="cv article" onclick="cvShow(true)">
+        <img src="images/cv.png" alt="">
         <p>S. Radulovic CV</p>
       </div>
       <div class="linkedin article">
-        <a href="https://www.linkedin.com/in/stefan-radulovi%C4%87-b494ba154/"><img src="images/in.png" alt=""></a>
-        <p>Business profile</p>
+        <a href="https://www.linkedin.com/in/stefan-radulovi%C4%87-b494ba154/"><img src="images/in.png" alt="">
+        <p>Business profile</p></a>
       </div>
       <div class="itazavrsni article">
-        <a href="https://sradulovicportfolio.000webhostapp.com/"><img src="images/zavrsni.png" alt=""></a>
-        <p>Final work ITA</p>
+        <a href="https://sradulovicportfolio.000webhostapp.com/"><img src="images/zavrsni.png" alt="">
+        <p>Final work ITA</p></a>
       </div>
       <div class="itazavrsni article">
-        <a href="https://github.com/radule97/intershipoptimista/tree/stefan2"><img src="images/github.png" alt=""></a>
-        <p>Intership Project</p>
+        <a href="https://github.com/radule97"><img src="images/github.png" alt="">
+        <p>GitHub</p></a>
       </div>
     </div>
     <div class="popup">
       <p>Double click to skip the introduction.</p>
+    </div>
+    <div class="show-cv">
+      <img src="images/stefan_radulovic.png" alt="">
+      <span onclick="cvShow(false)">x</span>
     </div>
   </body>
   <script type="text/javascript">
@@ -41,6 +45,7 @@
     var portfolio = document.getElementsByClassName("portfolio-name")[0];
     var popup = document.getElementsByClassName("popup")[0];
     var pauza = false;
+    var cv = document.getElementsByClassName("show-cv")[0];
     /*FUNCTIONS*/
     function animacija(n){
       if(n){
@@ -61,6 +66,20 @@
     function gasi(){
         portfolio.style.opacity = "0";
         portfolio.style.display = "none";
+    }
+    function cvShow(param){
+        if(param){
+            cv.style.display = "initial";
+            setTimeout(function(){
+                cv.style.opacity = "1";
+            }, 450);
+        }
+        else {
+            cv.style.opacity = "0";
+            setTimeout(function(){
+                cv.style.display = "none";
+            }, 450);
+        }
     }
     /*PLAY AND SKIP APLICATION*/
     setTimeout(function(){
@@ -87,6 +106,9 @@
       padding: 0;
       background-color: rgb(0, 0, 0);
       overflow: hidden;
+    }
+    a {
+      text-decoration: none !important;
     }
     .pozadina {
       width: 100%;
@@ -155,6 +177,35 @@
       color: rgb(97, 97, 97);
       font-size: 25px;
       font-family: 'Poppins', sans-serif;
+    }
+    .show-cv {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      background-color: rgba(0,0,0,0.85);
+      opacity: 0;
+      display: none;
+      transition: all 0.4s;
+    }
+    .show-cv img {
+      width: 800px;
+      border: 2px solid #456ba5;
+      border-radius: 10px;
+      left: 30%;
+      top: 25px;
+      position: absolute;
+    }
+    .show-cv span {
+      position: absolute;
+      top: 30px;
+      right: 29%;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      color: #456ba5;
+      cursor: pointer;
     }
   </style>
 </html>
